@@ -8,7 +8,6 @@ const {
   FollowController,
 } = require("../controllers");
 const authenticateToken = require("../middleware/auth");
-const { route } = require("../app");
 const router = express.Router();
 
 const uploadDestination = "uploads";
@@ -19,7 +18,6 @@ const storage = multer.diskStorage({
   },
 });
 
-const uplodads = multer({ storage: storage });
 //route users
 router.post("/register", UserController.register);
 router.post("/login", UserController.login);
