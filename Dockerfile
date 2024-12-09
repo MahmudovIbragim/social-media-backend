@@ -5,16 +5,16 @@ FROM node:20-alpine
 WORKDIR /app
 
 # Копируем файлы package.json и pnpm-lock.yaml
-COPY package*.json ./ 
+COPY package*.json ./
 COPY pnpm-lock.yaml ./
 
 # Устанавливаем pnpm
 RUN npm install -g pnpm
 
 # Устанавливаем зависимости с использованием pnpm
-RUN pnpm install --frozen-lockfile
+RUN npm install --frozen-lockfile
 
-# Устанавливаем Prisma как dev-зависимость (перенесем в локальный процесс)
+# Устанавливаем Prisma как dev-зависимость
 RUN pnpm add prisma --save-dev
 
 # Копируем остальные файлы в контейнер
